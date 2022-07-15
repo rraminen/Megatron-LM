@@ -18,7 +18,6 @@ import pathlib
 import subprocess
 
 import torch
-
 from torch.utils import cpp_extension
 
 # Setting this param to a list has a problem of generating different
