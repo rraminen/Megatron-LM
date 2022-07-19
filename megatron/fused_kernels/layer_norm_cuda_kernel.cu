@@ -246,14 +246,25 @@ void cuWelfordMuSigma2(
     }
   }
 }
-
+#ifndef __HIP_PLATFORM_HCC__
 template<typename U> U rsqrt(U v) {
+#else
+template<typename U> __device__ U rsqrt(U v) {
+#endif
   return U(1) / sqrt(v);
 }
+#ifndef __HIP_PLATFORM_HCC__
 template<> float rsqrt(float v) {
+#else
+template<> __device__ float rsqrt(float v) {
+#endif
   return rsqrtf(v);
 }
+#ifndef __HIP_PLATFORM_HCC__
 template<> double rsqrt(double v) {
+#else
+template<> __device__ double rsqrt(double v) {
+#endif
   return rsqrt(v);
 }
 
